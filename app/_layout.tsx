@@ -5,9 +5,7 @@ import { TamaguiProvider } from 'tamagui';
 
 import { tamaguiConfig } from '../tamagui.config';
 
-import '../global.css';
-
-export default function RootLayout() {
+const RootLayout = () => {
   const [loaded] = useFonts({
     Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
@@ -26,4 +24,6 @@ export default function RootLayout() {
       </ThemeProvider>
     </TamaguiProvider>
   );
-}
+};
+
+export default RootLayout;

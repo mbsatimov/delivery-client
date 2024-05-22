@@ -1,7 +1,7 @@
 import { Home, ListOrdered, User } from '@tamagui/lucide-icons';
 import { Tabs } from 'expo-router';
 
-export default function TabsLayout() {
+const TabsLayout = () => {
   return (
     <Tabs>
       <Tabs.Screen
@@ -13,19 +13,21 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="orders"
+        name="posts"
         options={{
-          title: 'Orders',
+          title: 'Posts',
           tabBarIcon: ({ color }) => <ListOrdered color={color} />,
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="profile"
         options={{
-          title: 'Settings',
+          title: 'Profile',
           tabBarIcon: ({ color }) => <User color={color} />,
         }}
       />
     </Tabs>
   );
-}
+};
+
+export default TabsLayout;

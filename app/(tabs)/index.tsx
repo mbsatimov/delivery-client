@@ -8,7 +8,7 @@ const HomeScreen = () => {
   console.log(location);
 
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView style={{ flex: 1 }}>
       <Map location={location} />
       <CoordinatesSheet />
     </SafeAreaView>
