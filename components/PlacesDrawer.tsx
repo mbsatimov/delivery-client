@@ -1,14 +1,36 @@
+import { useMapStore } from '@/store/useMapStore';
 import { ChevronDown } from '@tamagui/lucide-icons';
 import type { SheetProps } from '@tamagui/sheet';
 import { Sheet } from '@tamagui/sheet';
+import { useEffect, useState } from 'react';
 import { Button, Input, YStack } from 'tamagui';
 
-type InnerSheetProps = SheetProps & {
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
-};
+type InnerSheetProps = SheetProps & {};
 
-export const InnerSheet = ({ value, setValue, ...props }: InnerSheetProps) => {
+const PlacesDrawer = ({ ...props }: InnerSheetProps) => {
+  const { region } = useMapStore();
+  const [value, setValue] = useState<string>('');
+
+  const handleSearchInputChange = async (text: string) => {
+    const googleApiUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json`;
+    const input = text.trim();
+    const location = `${region.latitude},${region.longitude}&radius=2000`;
+    const url = `${googleApiUrl}?query=${input}&location=${location}&key=&callback=initMap`;
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    handleSearchInputChange(value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
   return (
     <Sheet
       animation="medium"
@@ -50,3 +72,5 @@ export const InnerSheet = ({ value, setValue, ...props }: InnerSheetProps) => {
     </Sheet>
   );
 };
+
+export { PlacesDrawer };

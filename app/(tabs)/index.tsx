@@ -1,11 +1,18 @@
-import { CoordinatesSheet } from '@/components/screens';
-import { View } from 'react-native';
+import { CoordinatesSheet, Map } from '@/components/screens';
+import { useCurrentLocation } from '@/hooks';
+import { SafeAreaView } from 'react-native';
 
-export default function Tab() {
+const HomeScreen = () => {
+  const { location } = useCurrentLocation();
+
+  console.log(location);
+
   return (
-    <View className="flex-1 justify-center items-center">
-      {/* <Map /> */}
+    <SafeAreaView className="flex-1">
+      <Map location={location} />
       <CoordinatesSheet />
-    </View>
+    </SafeAreaView>
   );
-}
+};
+
+export default HomeScreen;

@@ -1,19 +1,40 @@
-import { InnerSheet } from '@/components/screens/Home/SelectAddressSheet';
+import { PlacesDrawer } from '@/components';
+import { usePostStore } from '@/store/usePostStore';
+import { MapPin } from '@tamagui/lucide-icons';
 import { Sheet } from '@tamagui/sheet';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { BackHandler, StyleSheet } from 'react-native';
 import { Button } from 'tamagui';
 
 export const CoordinatesSheet = () => {
+  const { receiverAddress, senderAddress } = usePostStore();
+
   const [fromSheetOpen, setFromSheetOpen] = useState(false);
   const [toSheetOpen, setToSheetOpen] = useState(false);
-  const [from, setFrom] = useState<string>('');
-  const [to, setTo] = useState<string>('');
+
+  useEffect(() => {
+    const backAction = () => {
+      if (fromSheetOpen || toSheetOpen) {
+        setFromSheetOpen(false);
+        setToSheetOpen(false);
+        return true; // Prevent default behavior (exit app)
+      }
+      return false; // Allow default behavior (exit app)
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, [fromSheetOpen, toSheetOpen]);
 
   return (
     <>
       <Sheet
         open={true}
-        snapPoints={[55]}
+        snapPoints={[35]}
         disableDrag
         dismissOnOverlayPress={false}
       >
@@ -25,7 +46,7 @@ export const CoordinatesSheet = () => {
             width={'100%'}
             onPress={() => setFromSheetOpen(true)}
           >
-            {from}
+            {senderAddress.address}
           </Button>
           <Button
             height={50}
@@ -33,22 +54,15 @@ export const CoordinatesSheet = () => {
             justifyContent="flex-start"
             onPress={() => setToSheetOpen(true)}
           >
-            {to}
+            {receiverAddress.address}
           </Button>
-          <InnerSheet
-            value={from}
-            setValue={setFrom}
-            open={fromSheetOpen}
-            onOpenChange={setFromSheetOpen}
-          />
-          <InnerSheet
-            value={to}
-            setValue={setTo}
-            open={toSheetOpen}
-            onOpenChange={setToSheetOpen}
-          />
+          <PlacesDrawer open={fromSheetOpen} onOpenChange={setFromSheetOpen} />
+          <PlacesDrawer open={toSheetOpen} onOpenChange={setToSheetOpen} />
         </Sheet.Frame>
       </Sheet>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+});
