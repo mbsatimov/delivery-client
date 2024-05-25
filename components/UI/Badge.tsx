@@ -16,14 +16,18 @@ export const Badge: FC<BadgeProps> = ({
 }) => {
   return (
     <View
-      borderRadius="$2"
+      borderRadius="$4"
       paddingInline="$2.5"
       alignItems="center"
       justifyContent="center"
+      width={120}
+      height={24}
       style={[styles[variant]]}
       {...props}
     >
-      <Text fontSize={12}>{children}</Text>
+      <Text fontSize={12} style={{ color: 'inherit' }}>
+        {children}
+      </Text>
     </View>
   );
 };
@@ -31,6 +35,7 @@ export const Badge: FC<BadgeProps> = ({
 const styles = StyleSheet.create({
   danger: {
     backgroundColor: 'red',
+    color: 'white',
   },
   success: {
     backgroundColor: 'lightgreen',
@@ -43,5 +48,6 @@ const styles = StyleSheet.create({
   },
   primary: {
     backgroundColor: 'green',
+    color: 'white',
   },
 });

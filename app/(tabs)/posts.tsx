@@ -1,6 +1,7 @@
-import { PostList } from '@/components/screens/Posts/PostList';
 import React from 'react';
 import { SafeAreaView } from 'react-native';
+
+import { PostList } from '@/components/screens/Posts';
 
 const PostsScreen = () => {
   return (

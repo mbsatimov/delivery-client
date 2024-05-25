@@ -1,6 +1,7 @@
-import { CoordinatesSheet, Map } from '@/components/screens';
-import { useCurrentLocation } from '@/hooks';
 import { SafeAreaView } from 'react-native';
+
+import { CoordinatesSheet, Map } from '@/components/screens/Home';
+import { useCurrentLocation } from '@/hooks';
 
 const HomeScreen = () => {
   const { location } = useCurrentLocation();

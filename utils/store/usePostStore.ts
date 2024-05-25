@@ -1,4 +1,3 @@
-import { Address } from '@/types/address';
 import { create } from 'zustand';
 
 type PostState = {

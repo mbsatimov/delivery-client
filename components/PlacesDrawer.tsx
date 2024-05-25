@@ -1,9 +1,10 @@
-import { useMapStore } from '@/store/useMapStore';
 import { ChevronDown } from '@tamagui/lucide-icons';
 import type { SheetProps } from '@tamagui/sheet';
 import { Sheet } from '@tamagui/sheet';
 import { useEffect, useState } from 'react';
 import { Button, Input, YStack } from 'tamagui';
+
+import { useMapStore } from '@/utils/store';
 
 type InnerSheetProps = SheetProps & {};
 

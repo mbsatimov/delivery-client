@@ -1,9 +1,8 @@
 import { PlacesDrawer } from '@/components';
-import { usePostStore } from '@/store/usePostStore';
-import { MapPin } from '@tamagui/lucide-icons';
+import { usePostStore } from '@/utils/store/usePostStore';
 import { Sheet } from '@tamagui/sheet';
 import { useEffect, useState } from 'react';
-import { BackHandler, StyleSheet } from 'react-native';
+import { BackHandler } from 'react-native';
 import { Button } from 'tamagui';
 
 export const CoordinatesSheet = () => {
@@ -63,6 +62,3 @@ export const CoordinatesSheet = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-});

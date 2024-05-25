@@ -1,13 +1,11 @@
-import { Address } from '@/types/address';
-
 export const addressesData: Address[] = [
   {
-    address: '123 Main St',
+    address: '8-й квартал, 1-й этаж',
     latitude: 37.78825,
     longitude: -122.4324,
   },
   {
-    address: '456 Oak St',
+    address: 'массив "Аркадия", 1-й этаж',
     latitude: 37.78825,
     longitude: -122.4324,
   },

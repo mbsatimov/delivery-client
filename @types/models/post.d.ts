@@ -1,16 +1,16 @@
-import { Address } from './address';
-
-export enum PostStatus {
+enum PostStatus {
   PENDING = 'PENDING',
   ACCEPTED = 'ACCEPTED',
   REJECTED = 'REJECTED',
 }
 
-export interface Post {
+interface Post {
   id: number;
   pictureUrl?: string;
   description?: string;
-  name?: string;
+  createdAt: string;
+  name: string;
+  weight: number;
   status: PostStatus;
   senderAddress: Address;
   receiverAddress: Address;
