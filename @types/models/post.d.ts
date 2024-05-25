@@ -1,9 +1,3 @@
-enum PostStatus {
-  PENDING = 'PENDING',
-  ACCEPTED = 'ACCEPTED',
-  REJECTED = 'REJECTED',
-}
-
 interface Post {
   id: number;
   pictureUrl?: string;
@@ -15,3 +9,5 @@ interface Post {
   senderAddress: Address;
   receiverAddress: Address;
 }
+
+type PostStatus = 'PENDING' | 'ACCEPTED' | 'REJECTED';

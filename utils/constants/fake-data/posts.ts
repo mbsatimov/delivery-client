@@ -3,7 +3,7 @@ import { addressesData } from './addresses';
 export const postsData: Post[] = [
   {
     id: 1,
-    status: PostStatus.PENDING,
+    status: 'PENDING',
     name: 'Post 1',
     weight: 0.5,
     createdAt: '2022-01-01 07:30:00',
@@ -12,7 +12,7 @@ export const postsData: Post[] = [
   },
   {
     id: 2,
-    status: PostStatus.ACCEPTED,
+    status: 'ACCEPTED',
     name: 'Post 1',
     weight: 0.5,
     createdAt: '2022-01-01 12:00:00',
@@ -21,7 +21,7 @@ export const postsData: Post[] = [
   },
   {
     id: 3,
-    status: PostStatus.REJECTED,
+    status: 'REJECTED',
     name: 'Post 1',
     weight: 0.5,
     createdAt: '2022-01-01',
@@ -30,7 +30,7 @@ export const postsData: Post[] = [
   },
   {
     id: 4,
-    status: PostStatus.ACCEPTED,
+    status: 'ACCEPTED',
     name: 'Post 1',
     weight: 0.5,
     createdAt: '2022-01-01',
@@ -39,7 +39,7 @@ export const postsData: Post[] = [
   },
   {
     id: 5,
-    status: PostStatus.REJECTED,
+    status: 'REJECTED',
     name: 'Post 5',
     weight: 0.5,
     createdAt: '2022-01-01',
