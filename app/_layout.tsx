@@ -1,9 +1,6 @@
-import { DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { Providers } from '@/components/providers';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
-import { TamaguiProvider } from 'tamagui';
-
-import { tamaguiConfig } from '../tamagui.config';
 
 const RootLayout = () => {
   const [loaded] = useFonts({
@@ -16,13 +13,13 @@ const RootLayout = () => {
   }
 
   return (
-    <TamaguiProvider config={tamaguiConfig} defaultTheme={'light'}>
-      <ThemeProvider value={DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        </Stack>
-      </ThemeProvider>
-    </TamaguiProvider>
+    <Providers>
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="auth/login" options={{ headerShown: false }} />
+        <Stack.Screen name="auth/register" options={{ headerShown: false }} />
+      </Stack>
+    </Providers>
   );
 };
 

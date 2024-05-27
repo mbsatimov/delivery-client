@@ -1,16 +1,24 @@
-import { ChevronDown } from '@tamagui/lucide-icons';
-import type { SheetProps } from '@tamagui/sheet';
-import { Sheet } from '@tamagui/sheet';
-import { useEffect, useState } from 'react';
-import { Button, Input, YStack } from 'tamagui';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Input } from 'tamagui';
 
+import {
+  Drawer,
+  DrawerFrame,
+  DrawerHandle,
+  DrawerOverlay,
+} from '@/components/UI';
+import { useDrawerClose } from '@/hooks';
 import { useMapStore } from '@/utils/store';
 
-type InnerSheetProps = SheetProps & {};
+type PlacesDrawerProps = {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+};
 
-const PlacesDrawer = ({ ...props }: InnerSheetProps) => {
+const PlacesDrawer = ({ open, setOpen, ...props }: PlacesDrawerProps) => {
   const { region } = useMapStore();
   const [value, setValue] = useState<string>('');
+  useDrawerClose({ open, setOpen });
 
   const handleSearchInputChange = async (text: string) => {
     const googleApiUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json`;
@@ -33,44 +41,24 @@ const PlacesDrawer = ({ ...props }: InnerSheetProps) => {
   }, [value]);
 
   return (
-    <Sheet
-      animation="medium"
+    <Drawer
       modal
       snapPoints={[95]}
-      dismissOnSnapToBottom
       {...props}
+      open={open}
+      onOpenChange={setOpen}
     >
-      <Sheet.Overlay
-        animation="medium"
-        enterStyle={{ opacity: 0 }}
-        exitStyle={{ opacity: 0 }}
-      />
-      <Sheet.Handle marginInline="40%" />
-      <Sheet.Frame
-        padding="$4"
-        flex={1}
-        justifyContent="center"
-        alignItems="center"
-      >
+      <DrawerOverlay />
+      <DrawerFrame paddingBlock="$2" paddingInline="$4" flex={1}>
+        <DrawerHandle />
         <Input
           value={value}
           onChange={e => setValue(e.nativeEvent.text)}
           height={50}
           width={'100%'}
         />
-        <Sheet.ScrollView>
-          <YStack padding="$5" gap="$8">
-            <Button
-              size="$6"
-              circular
-              alignSelf="center"
-              icon={ChevronDown}
-              onPress={() => props.onOpenChange?.(false)}
-            />
-          </YStack>
-        </Sheet.ScrollView>
-      </Sheet.Frame>
-    </Sheet>
+      </DrawerFrame>
+    </Drawer>
   );
 };
 

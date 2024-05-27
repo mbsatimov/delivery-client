@@ -6,6 +6,7 @@ import {
   ProfileMenu,
 } from '@/components/screens/Profile';
 import { Colors } from '@/utils/constants/colors';
+import { Link } from 'expo-router';
 
 const ProfileScreen = () => {
   return (
@@ -16,6 +17,8 @@ const ProfileScreen = () => {
       </View>
       <Separator backgroundColor={Colors.light.accent} marginBlock="$1.5" />
       <ProfileMenu />
+      <Link href={'/auth/register'}>register</Link>
+      <Link href={'/auth/login'}>login</Link>
     </View>
   );
 };

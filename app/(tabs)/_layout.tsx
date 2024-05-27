@@ -26,6 +26,8 @@ const TabsLayout = () => {
         },
         tabBarItemStyle: {
           borderRadius: 30,
+          alignItems: 'center',
+          justifyContent: 'center',
         },
         tabBarActiveBackgroundColor: Colors.light.background,
         tabBarInactiveBackgroundColor: Colors.light.primary,

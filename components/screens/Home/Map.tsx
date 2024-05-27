@@ -1,4 +1,4 @@
-import { useMapStore } from '@/utils/store/useMapStore';
+import { useMapStore } from '@/utils/store/map';
 import { MapPin } from '@tamagui/lucide-icons';
 import * as Location from 'expo-location';
 import React, { FC } from 'react';

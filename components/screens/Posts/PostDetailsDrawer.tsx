@@ -1,33 +1,42 @@
 import { format } from 'date-fns';
-import React, { FC } from 'react';
-import { H4, Image, Separator, Sheet, SheetProps, Text, View } from 'tamagui';
+import React, { Dispatch, FC, SetStateAction } from 'react';
+import { H4, Image, Separator, Text, View } from 'tamagui';
 
-import { Badge } from '@/components/UI';
+import {
+  Badge,
+  Drawer,
+  DrawerFrame,
+  DrawerHandle,
+  DrawerOverlay,
+} from '@/components/UI';
+import { useDrawerClose } from '@/hooks';
 import { MoveDown } from '@tamagui/lucide-icons';
 
-type PostDetailsDrawerProps = SheetProps & {
+type PostDetailsDrawerProps = {
   post: Post;
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 export const PostDetailsDrawer: FC<PostDetailsDrawerProps> = ({
+  open,
+  setOpen,
   post,
   ...props
 }) => {
+  useDrawerClose({ open, setOpen });
+
   return (
-    <Sheet
-      animation="medium"
+    <Drawer
       modal
       snapPoints={[95]}
-      dismissOnSnapToBottom
+      open={open}
+      onOpenChange={setOpen}
       {...props}
     >
-      <Sheet.Overlay
-        animation="medium"
-        enterStyle={{ opacity: 0 }}
-        exitStyle={{ opacity: 0 }}
-      />
-      <Sheet.Handle marginInline="40%" />
-      <Sheet.Frame padding="$4" flex={1}>
+      <DrawerOverlay />
+      <DrawerFrame paddingBlock="$2" paddingInline="$4" flex={1}>
+        <DrawerHandle />
         <View alignItems="flex-end" marginBottom="$4">
           <Badge variant="success">{post.status}</Badge>
         </View>
@@ -54,7 +63,7 @@ export const PostDetailsDrawer: FC<PostDetailsDrawerProps> = ({
           </View>
         </View>
         <Separator marginBlock="$4" />
-      </Sheet.Frame>
-    </Sheet>
+      </DrawerFrame>
+    </Drawer>
   );
 };
