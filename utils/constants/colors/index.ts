@@ -8,5 +8,6 @@ export const Colors = {
     primaryForeground: '#ffffff',
     accent: '	#f5f5f4',
     border: '#8f96a6',
+    danger: '#ff0000',
   },
 };

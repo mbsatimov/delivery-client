@@ -1,6 +1,6 @@
 import { PlacesDrawer } from '@/components';
 import { Drawer, DrawerFrame, DrawerHandle } from '@/components/UI';
-import { usePostStore } from '@/utils/store/usePostStore';
+import { usePostStore } from '@/utils/store';
 import { useState } from 'react';
 import { Button, View } from 'tamagui';
 

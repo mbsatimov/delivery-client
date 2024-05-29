@@ -9,6 +9,9 @@ export const loginFormScheme = () =>
       })
       .startsWith('+998', {
         message: 'Phone number must start with +998',
+      })
+      .length(13, {
+        message: 'Phone number must be 13 characters',
       }),
     password: z.string().min(8, {
       message: 'Password must be at least 8 characters',

@@ -21,8 +21,11 @@ export const useLoginForm = () => {
   });
 
   const loginMutation = useLoginMutation({
-    onSuccess: data => {
-      setUser(data.user);
+    onSuccess: res => {
+      if (!res.ok) {
+        throw new Error(res.message);
+      }
+      setUser(res.data.user);
       router.push(ROUTE.HOME);
     },
   });

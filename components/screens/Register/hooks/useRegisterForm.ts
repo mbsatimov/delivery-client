@@ -20,6 +20,7 @@ export const useRegisterForm = () => {
       phoneNumber: '',
       password: '',
     },
+    mode: 'onChange',
   });
 
   const registerMutation = useRegisterMutation({

@@ -6,9 +6,13 @@ export interface PostLoginParams {
 }
 
 export interface PostLoginSuccessResponse {
-  accessToken: string;
-  refreshToken: string;
-  user: User;
+  data: {
+    accessToken: string;
+    refreshToken: string;
+    user: User;
+  };
+  ok: boolean;
+  message?: string;
 }
 
 export type PostLoginFailureResponse = ApiErrorResponse;

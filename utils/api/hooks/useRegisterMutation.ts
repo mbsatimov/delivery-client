@@ -4,8 +4,8 @@ import type {
   PostRegisterFailureResponse,
   PostRegisterRequestConfig,
   PostRegisterSuccessResponse,
-} from '@/utils/api';
-import { postRegister } from '@/utils/api';
+} from '../requests';
+import { postRegister } from '../requests';
 
 export const useRegisterMutation = (
   options?: UseMutationOptions<

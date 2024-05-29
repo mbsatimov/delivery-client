@@ -1,1 +1,2 @@
-export * from './auth';
+export * from './useLoginMutation';
+export * from './useRegisterMutation';

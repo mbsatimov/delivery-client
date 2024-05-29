@@ -4,8 +4,8 @@ import type {
   PostLoginFailureResponse,
   PostLoginRequestConfig,
   PostLoginSuccessResponse,
-} from '@/utils/api';
-import { postLogin } from '@/utils/api';
+} from '../requests';
+import { postLogin } from '../requests';
 
 export const useLoginMutation = (
   options?: UseMutationOptions<
