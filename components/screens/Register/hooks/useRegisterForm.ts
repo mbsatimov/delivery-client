@@ -24,8 +24,8 @@ export const useRegisterForm = () => {
   });
 
   const registerMutation = useRegisterMutation({
-    onSuccess: data => {
-      setUser(data.user);
+    onSuccess: res => {
+      setUser(res.data.user);
       router.push(ROUTE.HOME);
     },
   });

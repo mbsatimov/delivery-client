@@ -1,3 +1,2 @@
-export * from './map';
-export * from './post';
+export * from './direction';
 export * from './user';

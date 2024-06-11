@@ -1,2 +1,1 @@
-export * from './CoordinatesSheet';
-export * from './Map';
+export * from './components';

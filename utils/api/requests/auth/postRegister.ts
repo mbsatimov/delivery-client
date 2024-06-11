@@ -3,8 +3,12 @@ import { $api } from '@/utils/api';
 export interface PostRegisterParams extends Omit<User, 'id'> {}
 
 export interface PostRegisterSuccessResponse {
-  token: string;
-  user: User;
+  data: {
+    token: string;
+    user: User;
+  };
+  ok: boolean;
+  message?: string;
 }
 
 export type PostRegisterFailureResponse = ApiErrorResponse;

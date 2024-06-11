@@ -26,7 +26,9 @@ export type DrawerHandleProps = ComponentProps<typeof Sheet.Handle> & {};
 export const DrawerHandle = ({ ...props }: DrawerHandleProps) => (
   <Sheet.Handle
     backgroundColor={Colors.light.primary}
-    marginInline="40%"
+    marginInline="43%"
+    height={5}
+    opacity={0.2}
     {...props}
   />
 );

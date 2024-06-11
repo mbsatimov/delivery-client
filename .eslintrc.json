@@ -4,6 +4,7 @@
   "rules": {
     "prettier/prettier": "error",
     "no-var": "error", // Disallow the use of var
-    "prefer-arrow-callback": "error" // Require arrow functions for callbacks
+    "prefer-arrow-callback": "error", // Require arrow functions for callbacks
+    "react-hooks/exhaustive-deps": "off"
   }
 }

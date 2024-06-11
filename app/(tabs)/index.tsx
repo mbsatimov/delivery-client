@@ -1,17 +1,24 @@
 import { SafeAreaView } from 'react-native';
 
-import { CoordinatesSheet, Map } from '@/components/screens/Home';
+import { DirectionDrawer, Map } from '@/components/screens/Home';
 import { useCurrentLocation } from '@/hooks';
+import { useDirectionStore } from '@/utils/store';
+import { useEffect } from 'react';
 
 const HomeScreen = () => {
   const { location } = useCurrentLocation();
+  const { senderPlace, setSenderPlace } = useDirectionStore();
 
-  console.log(location);
+  useEffect(() => {
+    if (location) {
+      setSenderPlace({ ...senderPlace, ...location });
+    }
+  }, [location]);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Map location={location} />
-      <CoordinatesSheet />
+      <Map />
+      <DirectionDrawer />
     </SafeAreaView>
   );
 };

@@ -1,31 +1,30 @@
-import { useMapStore } from '@/utils/store/map';
+import { useDirectionStore } from '@/utils/store';
 import { MapPin } from '@tamagui/lucide-icons';
-import * as Location from 'expo-location';
 import React, { FC } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Region } from 'react-native-maps';
 
-type MapProps = {
-  location: Location.LocationObjectCoords | null;
-};
+type MapProps = {};
 
-export const Map: FC<MapProps> = ({ location }) => {
-  const { mapViewRef: ref, setRegion } = useMapStore();
-
-  if (!location) return null;
+export const Map: FC<MapProps> = () => {
+  const { receiverPlace, setReceiverPlace } = useDirectionStore();
 
   const onRegionChange = (newRegion: Region) => {
-    setRegion(newRegion);
+    setReceiverPlace({
+      latitude: newRegion.latitude,
+      longitude: newRegion.longitude,
+      address: '',
+      title: '',
+    });
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <MapView
-        ref={ref}
         style={styles.map}
         region={{
-          latitude: location.latitude,
-          longitude: location.longitude,
+          latitude: receiverPlace.latitude,
+          longitude: receiverPlace.longitude,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}

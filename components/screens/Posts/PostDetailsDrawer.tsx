@@ -1,3 +1,4 @@
+import { MoveDown } from '@tamagui/lucide-icons';
 import { format } from 'date-fns';
 import React, { Dispatch, FC, SetStateAction } from 'react';
 import { H4, Image, Separator, Text, View } from 'tamagui';
@@ -10,7 +11,6 @@ import {
   DrawerOverlay,
 } from '@/components/UI';
 import { useDrawerClose } from '@/hooks';
-import { MoveDown } from '@tamagui/lucide-icons';
 
 type PostDetailsDrawerProps = {
   post: Post;

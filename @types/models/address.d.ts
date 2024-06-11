@@ -1,8 +1,4 @@
-interface Address {
-  latitude: number;
-  longitude: number;
-  address: string;
-  title?: string;
+interface Address extends Place {
   entrance?: string;
   floor?: string;
   apartment?: string;
